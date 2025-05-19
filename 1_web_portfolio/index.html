@@ -13,9 +13,18 @@
 </head>
 
 <body>
+    <nav id="navbar">
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>About</a></li>
+            <li><a>Projects</a></li>
+            <li><a>About</a></li>
+            
+        </ul>
+    </nav>
     <header>
         <a href="/">James M</a>
-        <nav>
+        <nav class="icon-links-bar">
             <a target="_blank" href="https://github.com/JamboMiller314"><i class="fa-brands fa-github"></i></a>
             <a target="_blank" href="https://www.linkedin.com/in/james-dale-miller/">
                 <i class="fa-brands fa-linkedin"></i></a>
@@ -31,7 +40,7 @@
                 A gameplay programmer looking to dive into web development.
             </h5>
             <div class="links-container">
-                <a href="mailto:reinventingsteel314@gmail.com"><i class="fa-solid fa-arrow-right"></i>
+                <a href="mailto:reinventingsteel314@gmail.com"><i class="fa-solid link-arrow fa-arrow-right"></i>
                     Email me</a>
                 <a target="_blank" href="https://github.com/JamboMiller314">GitHub</a>
                 <a target="_blank" href="https://www.linkedin.com/in/james-dale-miller/">
@@ -39,13 +48,13 @@
             </div>
 
             <div id="play-game">
-                <button onclick="">Play Game???</button>
+                <button onclick="playGame()">Play Game???</button>
             </div>
             <div class="color-div">
                 <h4>Pick a color</h4>
                 <p style="display: none;">Whoa, cool color!</p>
-                <input type="color" id="color-picker" onchange="" value="#0084ff">
-                <button style="display:none" onclick="">Reset</button>
+                <input type="color" id="color-picker" onchange="changeColor()" value="#0084ff">
+                <button style="display:none" onclick="resetColor()">Reset</button>
             </div>
         </section>
         <section>
@@ -161,7 +170,37 @@
         <p>By <a target="_blank">James Miller</a>✨the repo on <a target="_blank" href="">GitHub</a>
             << /p>
     </footer>
-    <script></script>
+    <script>
+        const body = document.querySelector('body')
+        const colorInput = document.getElementById('color-picker')
+        const colorDiv = document.querySelector('.color-div')
+        const hiddenText = document.querySelector('.color-div p')
+        const resetButton = document.querySelector('.color-div button')
+        const playButton = document.getElementById('play-game')
+
+        function playGame() {
+            colorDiv.style.display = 'block'
+            playButton.style.display = 'none'
+        }
+
+        function changeColor() {
+            const selectedColor = colorInput.value
+            body.style.background = selectedColor
+            resetButton.style.display = 'block'
+            hiddenText.style.display = 'block'
+            colorInput.style.display = 'none'
+        }
+
+        function resetColor() {
+            body.style.background = 'white'
+            colorInput.style.display = 'block'
+            playButton.style.display = 'block'
+            
+            hiddenText.style.display = 'none'
+            resetButton.style.display = 'none'
+            colorDiv.style.display = 'none'
+        }
+    </script>
 </body>
 
 </html>
